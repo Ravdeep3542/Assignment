@@ -1,0 +1,162 @@
+																Assignment Day-14
+
+
+Q 1. Write a program containing a possible exception. Use a try block to throw it and a catch block 
+to handle it promptly.
+Ans 1.
+
+package exceptionHandling;
+import java.util.Scanner;
+public class Q1 {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a number :-");
+		int n1 = sc.nextInt();
+		System.out.println("Enter number to divide with :-");
+		int n2 = sc.nextInt();
+		
+		try {
+			int result = n1/n2;
+			System.out.println(result);
+		} catch (Exception e) {
+			System.out.println("Can't be divided by ZERO..");
+			
+		} 
+
+	}
+
+}
+_________________________________________________
+
+
+Q 2. Write a program that illustrates the application of multiple catch statements.
+
+Ans 2. 
+package exceptionHandling;
+
+import java.util.*;
+public class Q2 {
+    	public static void main(String[] args) {
+    		Scanner sc = new Scanner(System.in);
+    		System.out.println("Enter a value: ");
+    		int check = sc.nextInt();
+    		try {
+    			int[] numbers = { 1, 2, 3 };
+    			System.out.println(numbers[check]);
+    		} catch (NumberFormatException e) {
+    			System.out.println("Array out of bound");
+
+    		} catch ( ArrayIndexOutOfBoundsException e) {
+    			System.out.println("Exception");
+    		}
+    	}
+    }
+
+
+_________________________________________________
+
+
+Q 3. Write a program that demonstrates how certain exception types are not allowed to be thrown.
+
+
+Ans 3. 
+
+package exceptionHandling;
+
+public class Main {
+    public static void main(String[] args) {
+        throw new Error("This is an example Error.");
+    }
+}
+This is the example of checked exception and will throw an exception at the time of compilation.
+
+package exceptionHandling;
+public class Main {
+    public static void main(String[] args) {
+        throw new RuntimeException("This is an example RuntimeException.");
+    }
+}
+This is the example of runtime Exception and this code will be compiled.
+
+
+
+
+_________________________________________________
+
+
+Q 4. Write a program to demonstrate the concept of re-throwing an exception.
+
+Ans 4.
+package exceptionHandling;
+
+import java.util.Scanner;
+
+public class Q4 {
+	public static void main(String[] args) {
+		try {
+			divideByZero();
+		} catch (ArithmeticException e) {
+			System.out.println("Divison by 0 Exception 1");
+		}
+	}
+
+	public static void divideByZero() throws ArithmeticException {
+		try {
+
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter the value of a:- ");
+			int a = sc.nextInt();
+			System.out.println("Enter the value of b:- ");
+			int b = sc.nextInt();
+			sc.close();
+			
+			int r = a / b;
+			System.out.println("Result by dividing both numbers :- "+r);
+
+		} catch (ArithmeticException e) {
+			System.out.println("Divison by 0 Exception 2");
+			throw e;
+		}
+	}
+}
+
+_________________________________________________
+
+
+Q 5. You will be given two integers and as input, you have to compute x/y. If x and y are not 32 bit 
+signed integers or if y is zero, exception will occur and you have to report it. Read sample 
+Input/Output to know what to report in case of exceptions.
+
+Ans 5.
+package exceptionHandling;
+
+import java.util.Scanner;
+
+public class Q5 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		try {
+			
+			System.out.println("Enter x: ");
+			int x = sc.nextInt();
+			
+			System.out.println("Enter y: ");
+			int y = sc.nextInt();
+		
+			int result = x / y;
+			
+			System.out.println(x + " divided by " + y+ " is "+  result);
+			
+		} catch (ArithmeticException e) {
+			System.out.println("Can't be divide by 0  (Arithmetic Exception)");
+		} catch (Exception e) {
+			System.out.println("Value is not a 32 bit signed integer ");
+		}
+	}
+
+}
+
+_________________________________________________
+
